@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=1000">
+<title>BUDSHLYAKHMASH</title>
+<link href='http://fonts.googleapis.com/css?family=Exo+2:700,600,400,500' rel='stylesheet' type='text/css'>
+<link href="css/normalize.css" rel="stylesheet" type="text/css">
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<script src="js/html5shiv.min.js"></script>
+</head>
+<body>
+	<div class="main-page">
+		<div class="header">
+			<div class="margin">
+				<a href="index.html" class="logo"><img src="images/logo.png" alt="#"></a>
+				<div id="menu">
+					<ul>
+						<li><a href="index.html">About us</a></li>
+						<li><a href="products.html">Products</a></li>
+						<li><a href="worldwide.html">Worldwide presence</a></li>
+						<li><a href="partners.html">Partners</a></li>
+						<li class="active-li"><a href="contacts.html">Contacts</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="googleMap"></div>
+		<div class="about">
+			<p class="about-c">contacts</p>
+			<div class="margin clearfix">
+				<div class="address">
+					<p class="bold">BUDSHLYAKHMASH</p>
+					<p>Shcholkivska str., 4</p>
+					<p>Brovary, Kyiv region,</p>
+					<p>Ukraine 07400</p>
+				</div>
+				<div class="contacts">
+					<p>Please contact:</p>
+					<p><span class="bold">Mrs. Tetiana VASYLENKO</span>, New Markets Development</p>
+					<p>E-mail: t.vasylenko@bshm.com.ua</p>
+					<p>Mob: +38 067 5382806</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		&copy; 2008–2015 All rights reserved
+	</div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+var mapCoordinates = new google.maps.LatLng(50.522486, 30.815402);
+var markers = [];
+var image = new google.maps.MarkerImage( 'images/marker.png', // иконка
+new google.maps.Size(58,59), // размеры иконок
+new google.maps.Point(0,0)
+);
+function addMarker()
+{
+markers.push(new google.maps.Marker({
+position: mapCoordinates,
+raiseOnDrag: false,
+icon: image,
+map: map,
+draggable: false
+}));
+}
+var styles = [
+{
+featureType: 'water',
+elementType: 'all',
+stylers: [
+{ hue: '#4f6cb7' },
+{ saturation: -7 },
+{ lightness: -32 },
+{ visibility: 'on' }
+]
+},{
+featureType: 'landscape',
+elementType: 'all',
+stylers: [
+{ hue: '#bebabb' },
+{ saturation: -89 },
+{ lightness: -17 },
+{ visibility: 'on' }
+]
+},{
+featureType: 'road',
+elementType: 'all',
+stylers: [
+{ hue: '#ee8a50' },
+{ saturation: -18 },
+{ lightness: -3 },
+{ visibility: 'on' }
+]
+},{
+featureType: 'poi',
+elementType: 'all',
+stylers: [
+{ hue: '#6e686c' },
+{ saturation: -93 },
+{ lightness: -46 },
+{ visibility: 'on' }
+]
+},{
+featureType: 'administrative',
+elementType: 'all',
+stylers: [
+{ hue: '#6e686c' },
+{ saturation: 3 },
+{ lightness: -18 },
+{ visibility: 'on' }
+]
+}
+];
+var options = {
+ mapTypeControlOptions: {
+  mapTypeIds: [ 'Styled']
+ },
+ center: mapCoordinates,
+ zoom: 14,
+ mapTypeId: 'Styled'
+};
+var div = document.getElementById('googleMap');
+var map = new google.maps.Map(div, options);
+var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
+map.mapTypes.set('Styled', styledMapType);
+addMarker();
+</script>
+</body>
+</html>
